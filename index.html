@@ -1,12 +1,11 @@
-<\!DOCTYPE html\>
-
-<html lang="ru"\>
-<head\>
-  <meta charset="UTF-8" /\>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/\>
-  <title\>Друзья в Discord\</title\>
-  <link href="https://discord.gg/2u4uq6eDJH" rel="stylesheet"/\>
-  <style\>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Друзья в Discord</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,26 +15,28 @@
     body {
       font-family: 'Rubik', sans-serif;
       min-height: 100vh;
-      background: linear-gradient(-45deg, \#232754, \#36399a, \#7289da, \#42459e);
+      /* Enhanced background gradient for a more vibrant look */
+      background: linear-gradient(-45deg, #232754, #36399a, #7289da, #42459e);
       background-size: 400% 400%;
+      /* Added a subtle wave animation to the background */
       animation: gradientBG 15s ease infinite, wave 10s ease-in-out infinite alternate;
-      color: \#fff;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: hidden; /* Prevent scrollbars from parallax effect */
       position: relative;
     }
 
-    \* Падающие звездочки \*/
+    /* Падающие звездочки (Twinkling stars) */
     body::before {
       content: "";
       position: absolute;
       width: 100%;
       height: 100%;
-      background-image: radial-gradient(\#ffffff22 1px, transparent 1px);
+      background-image: radial-gradient(#ffffff22 1px, transparent 1px);
       background-size: 40px 40px;
-      opacity: 0.3;
+      opacity: 0.3; /* Slightly increased opacity for visibility */
       z-index: 0;
       animation: twinkle 10s linear infinite;
     }
@@ -51,6 +52,7 @@
       to { background-position: 100px 100px; }
     }
 
+    /* New wave background animation */
     @keyframes wave {
       0% { background-position: 0% 0%; }
       100% { background-position: 100% 100%; }
@@ -61,41 +63,50 @@
       animation: fadeIn 1.5s ease;
       padding: 30px;
       max-width: 600px;
-      z-index: 1;
+      z-index: 1; /* Ensure content is above background effects */
+      /* Add a subtle glow/shadow to the container itself */
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 30px rgba(114, 137, 218, 0.5), 0 0 60px rgba(114, 137, 218, 0.3);
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
-      transform: translate(0, 0); /\* Для параллакса \*/
-      transition: transform 0.1s ease-out;
+      /* Properties for parallax effect */
+      transform: translate(0, 0);
+      transition: transform 0.1s ease-out; /* Smooth transition for mouse movement */
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Text glow */
     }
 
     p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
       opacity: 0.9;
-      transform: translate(0, 0); /\* Для параллакса \*/
+      /* Properties for parallax effect */
+      transform: translate(0, 0);
       transition: transform 0.1s ease-out;
     }
 
     a.button {
-      background-color: \#fff;
-      color: \#7289da;
+      background-color: #fff;
+      color: #7289da; /* Changed button color to match Discord's accent */
       padding: 14px 28px;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.1rem;
       border-radius: 12px;
-      transition: background 0.3s ease, transform 0.3s ease, translate 0.1s ease-out;
+      transition: background 0.3s ease, transform 0.3s ease, transform 0.1s ease-out; /* Combined transitions */
       display: inline-block;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transform: translate(0, 0); /\* Для параллакса \*/
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.3); /* Added white glow */
+      /* Properties for parallax effect */
+      transform: translate(0, 0);
     }
 
     a.button:hover {
-      background-color: \#e0e0ff;
-      transform: scale(1.05);
+      background-color: #e0e0ff; /* Lighter hover color */
+      transform: scale(1.08); /* Slightly larger scale on hover */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.5); /* Enhanced hover shadow */
     }
 
     @keyframes fadeIn {
@@ -110,43 +121,61 @@
       p {
         font-size: 1rem;
       }
+      .container {
+        padding: 20px;
+      }
     }
-  </style\>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="parallax-title">Добро пожаловать!</h1>
+    <p id="parallax-text">Это наш уютный Discord-сервер для друзей.<br>Присоединяйся к общению, играм и весёлым вечерам!</p>
+    <a id="parallax-button" class="button" href="https://discord.gg/ТВОЙ_ИНВАЙТ" target="_blank">Присоединиться</a>
+  </div>
 
-</head\>
-<body\>
-  <div class="container"\>
-    <h1 id="parallax-title"\>Добро пожаловать\!\</h1\>
-    <p id="parallax-text"\>Это наш уютный Discord-сервер для друзей.\<br\>Присоединяйся к общению, играм и весёлым вечерам\!\</p\>
-    <a id="parallax-button" class="button" href="[подозрительная ссылка удалена]" target="\_blank"\>Присоединиться\</a\>
-  </div\>
-
-  <script\>
+  <script>
     const container = document.querySelector('.container');
     const title = document.getElementById('parallax-title');
     const text = document.getElementById('parallax-text');
     const button = document.getElementById('parallax-button');
 
-    container.addEventListener('mousemove', (e) =\> {
+    container.addEventListener('mousemove', (e) => {
+      // Calculate the center of the viewport
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
 
-      const deltaX = (mouseX - centerX) \* 0.02;
-      const deltaY = (mouseY - centerY) \* 0.02;
+      // Get mouse position relative to the center
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
 
-      title.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-      text.style.transform = `translate(${deltaX * 0.8}px, ${deltaY * 0.8}px)`;
-      button.style.transform = `translate(${deltaX * 1.2}px, ${deltaY * 1.2}px)`;
+      // Define a sensitivity for the parallax effect
+      // Smaller values mean less movement
+      const sensitivityTitle = 0.02;
+      const sensitivityText = 0.015;
+      const sensitivityButton = 0.025;
+
+      const deltaXTitle = mouseX * sensitivityTitle;
+      const deltaYTitle = mouseY * sensitivityTitle;
+
+      const deltaXText = mouseX * sensitivityText;
+      const deltaYText = mouseY * sensitivityText;
+
+      const deltaXButton = mouseX * sensitivityButton;
+      const deltaYButton = mouseY * sensitivityButton;
+
+      // Apply transform in the opposite direction for the parallax effect
+      title.style.transform = `translate(${-deltaXTitle}px, ${-deltaYTitle}px)`;
+      text.style.transform = `translate(${-deltaXText}px, ${-deltaYText}px)`;
+      button.style.transform = `translate(${-deltaXButton}px, ${-deltaYButton}px)`;
     });
 
-    container.addEventListener('mouseleave', () =\> {
+    container.addEventListener('mouseleave', () => {
+      // Reset position when mouse leaves the container
       title.style.transform = `translate(0, 0)`;
       text.style.transform = `translate(0, 0)`;
       button.style.transform = `translate(0, 0)`;
     });
-  </script\>
-
-</body\>
-</html\>
+  </script>
+</body>
+</html>
