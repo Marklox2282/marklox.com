@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Друзья в Discord</title>
+  <title>Discord-сервер друзей</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+    /* Basic Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,32 +16,34 @@
     body {
       font-family: 'Rubik', sans-serif;
       min-height: 100vh;
-      /* Enhanced background gradient for a more vibrant look */
-      background: linear-gradient(-45deg, #232754, #36399a, #7289da, #42459e);
-      background-size: 400% 400%;
-      /* Added a subtle wave animation to the background */
+      /* Dynamic Background Gradient with Discord-like colors */
+      background: linear-gradient(-45deg, #2c2f33, #36393f, #5865F2, #404EED);
+      background-size: 400% 400%; /* Allows for larger, smoother animation */
       animation: gradientBG 15s ease infinite, wave 10s ease-in-out infinite alternate;
       color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Prevent scrollbars from parallax effect */
+      overflow: hidden; /* Important to hide scrollbars caused by parallax */
       position: relative;
     }
 
-    /* Падающие звездочки (Twinkling stars) */
+    /* Twinkling stars effect (pseudo-element for background detail) */
     body::before {
       content: "";
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       background-image: radial-gradient(#ffffff22 1px, transparent 1px);
       background-size: 40px 40px;
-      opacity: 0.3; /* Slightly increased opacity for visibility */
+      opacity: 0.3;
       z-index: 0;
       animation: twinkle 10s linear infinite;
     }
 
+    /* Keyframe animations */
     @keyframes gradientBG {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
@@ -52,77 +55,82 @@
       to { background-position: 100px 100px; }
     }
 
-    /* New wave background animation */
     @keyframes wave {
       0% { background-position: 0% 0%; }
       100% { background-position: 100% 100%; }
     }
 
+    /* Main Content Container */
     .container {
       text-align: center;
-      animation: fadeIn 1.5s ease;
-      padding: 30px;
-      max-width: 600px;
-      z-index: 1; /* Ensure content is above background effects */
-      /* Add a subtle glow/shadow to the container itself */
+      animation: fadeIn 1.5s ease; /* Fade-in animation for the whole container */
+      padding: 40px; /* Increased padding */
+      max-width: 650px; /* Slightly wider container */
+      z-index: 1; /* Ensures content is above background effects */
       border-radius: 20px;
-      background: rgba(0, 0, 0, 0.1);
-      box-shadow: 0 0 30px rgba(114, 137, 218, 0.5), 0 0 60px rgba(114, 137, 218, 0.3);
+      background: rgba(0, 0, 0, 0.2); /* Slightly darker, more transparent background for the container */
+      box-shadow: 0 0 30px rgba(88, 101, 242, 0.6), 0 0 60px rgba(64, 78, 237, 0.4); /* Discord-blue glow */
+      backdrop-filter: blur(8px); /* Frosted glass effect */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      /* Properties for parallax effect */
-      transform: translate(0, 0);
-      transition: transform 0.1s ease-out; /* Smooth transition for mouse movement */
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Text glow */
+      font-size: 3.5rem; /* Larger heading */
+      margin-bottom: 1.2rem;
+      transform: translate(0, 0); /* Base for parallax */
+      transition: transform 0.1s ease-out; /* Smooth transition for parallax */
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.5); /* Enhanced text glow */
     }
 
     p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-      /* Properties for parallax effect */
-      transform: translate(0, 0);
+      font-size: 1.3rem; /* Larger paragraph text */
+      margin-bottom: 2.5rem; /* More space below text */
+      opacity: 0.95;
+      line-height: 1.5; /* Better readability */
+      transform: translate(0, 0); /* Base for parallax */
       transition: transform 0.1s ease-out;
     }
 
     a.button {
-      background-color: #fff;
-      color: #7289da; /* Changed button color to match Discord's accent */
-      padding: 14px 28px;
+      background-color: #7289da; /* Discord blue button */
+      color: #fff; /* White text on button */
+      padding: 16px 32px; /* Larger padding for a more prominent button */
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 12px;
-      transition: background 0.3s ease, transform 0.3s ease, transform 0.1s ease-out; /* Combined transitions */
+      font-size: 1.2rem; /* Larger button text */
+      border-radius: 30px; /* More rounded button */
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       display: inline-block;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.3); /* Added white glow */
-      /* Properties for parallax effect */
-      transform: translate(0, 0);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(114, 137, 218, 0.7); /* Enhanced button shadow/glow */
+      transform: translate(0, 0); /* Base for parallax */
     }
 
     a.button:hover {
-      background-color: #e0e0ff; /* Lighter hover color */
-      transform: scale(1.08); /* Slightly larger scale on hover */
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.5); /* Enhanced hover shadow */
+      background-color: #5b6eae; /* Darker blue on hover */
+      transform: scale(1.1) translateY(-3px); /* Lift and enlarge on hover */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(114, 137, 218, 0.9); /* More pronounced hover shadow */
     }
 
+    /* Fade-in animation for initial load */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* Responsive adjustments */
     @media (max-width: 600px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
       p {
+        font-size: 1.1rem;
+      }
+      a.button {
         font-size: 1rem;
+        padding: 12px 24px;
       }
       .container {
-        padding: 20px;
+        padding: 25px;
       }
     }
   </style>
@@ -149,12 +157,14 @@
       const mouseX = e.clientX - centerX;
       const mouseY = e.clientY - centerY;
 
-      // Define a sensitivity for the parallax effect
-      // Smaller values mean less movement
-      const sensitivityTitle = 0.02;
-      const sensitivityText = 0.015;
-      const sensitivityButton = 0.025;
+      // Define different sensitivity levels for elements to create depth
+      // Larger values mean less movement (further away illusion)
+      // Smaller values mean more movement (closer illusion)
+      const sensitivityTitle = 0.02; // Title moves less (further back)
+      const sensitivityText = 0.015; // Text moves medium
+      const sensitivityButton = 0.025; // Button moves most (closer to viewer)
 
+      // Calculate delta for each element
       const deltaXTitle = mouseX * sensitivityTitle;
       const deltaYTitle = mouseY * sensitivityTitle;
 
@@ -164,14 +174,14 @@
       const deltaXButton = mouseX * sensitivityButton;
       const deltaYButton = mouseY * sensitivityButton;
 
-      // Apply transform in the opposite direction for the parallax effect
+      // Apply transform in the opposite direction of mouse movement for parallax effect
       title.style.transform = `translate(${-deltaXTitle}px, ${-deltaYTitle}px)`;
       text.style.transform = `translate(${-deltaXText}px, ${-deltaYText}px)`;
       button.style.transform = `translate(${-deltaXButton}px, ${-deltaYButton}px)`;
     });
 
     container.addEventListener('mouseleave', () => {
-      // Reset position when mouse leaves the container
+      // Reset position when mouse leaves the container area
       title.style.transform = `translate(0, 0)`;
       text.style.transform = `translate(0, 0)`;
       button.style.transform = `translate(0, 0)`;
