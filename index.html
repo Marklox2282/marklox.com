@@ -1,191 +1,116 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Discord-сервер друзей</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    /* Basic Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Rubik', sans-serif;
-      min-height: 100vh;
-      /* Dynamic Background Gradient with Discord-like colors */
-      background: linear-gradient(-45deg, #2c2f33, #36393f, #5865F2, #404EED);
-      background-size: 400% 400%; /* Allows for larger, smoother animation */
-      animation: gradientBG 15s ease infinite, wave 10s ease-in-out infinite alternate;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden; /* Important to hide scrollbars caused by parallax */
-      position: relative;
-    }
-
-    /* Twinkling stars effect (pseudo-element for background detail) */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(#ffffff22 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.3;
-      z-index: 0;
-      animation: twinkle 10s linear infinite;
-    }
-
-    /* Keyframe animations */
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    @keyframes twinkle {
-      from { background-position: 0 0; }
-      to { background-position: 100px 100px; }
-    }
-
-    @keyframes wave {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
-    }
-
-    /* Main Content Container */
-    .container {
-      text-align: center;
-      animation: fadeIn 1.5s ease; /* Fade-in animation for the whole container */
-      padding: 40px; /* Increased padding */
-      max-width: 650px; /* Slightly wider container */
-      z-index: 1; /* Ensures content is above background effects */
-      border-radius: 20px;
-      background: rgba(0, 0, 0, 0.2); /* Slightly darker, more transparent background for the container */
-      box-shadow: 0 0 30px rgba(88, 101, 242, 0.6), 0 0 60px rgba(64, 78, 237, 0.4); /* Discord-blue glow */
-      backdrop-filter: blur(8px); /* Frosted glass effect */
-      border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-    }
-
-    h1 {
-      font-size: 3.5rem; /* Larger heading */
-      margin-bottom: 1.2rem;
-      transform: translate(0, 0); /* Base for parallax */
-      transition: transform 0.1s ease-out; /* Smooth transition for parallax */
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.5); /* Enhanced text glow */
-    }
-
-    p {
-      font-size: 1.3rem; /* Larger paragraph text */
-      margin-bottom: 2.5rem; /* More space below text */
-      opacity: 0.95;
-      line-height: 1.5; /* Better readability */
-      transform: translate(0, 0); /* Base for parallax */
-      transition: transform 0.1s ease-out;
-    }
-
-    a.button {
-      background-color: #7289da; /* Discord blue button */
-      color: #fff; /* White text on button */
-      padding: 16px 32px; /* Larger padding for a more prominent button */
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem; /* Larger button text */
-      border-radius: 30px; /* More rounded button */
-      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      display: inline-block;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(114, 137, 218, 0.7); /* Enhanced button shadow/glow */
-      transform: translate(0, 0); /* Base for parallax */
-    }
-
-    a.button:hover {
-      background-color: #5b6eae; /* Darker blue on hover */
-      transform: scale(1.1) translateY(-3px); /* Lift and enlarge on hover */
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(114, 137, 218, 0.9); /* More pronounced hover shadow */
-    }
-
-    /* Fade-in animation for initial load */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-      p {
-        font-size: 1.1rem;
-      }
-      a.button {
-        font-size: 1rem;
-        padding: 12px 24px;
-      }
-      .container {
-        padding: 25px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Лучший Дискорд Хайп Клуб в мире!</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #fff;
+    }
+    .join-btn {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .join-btn:hover {
+      background: white;
+      color: #222;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 id="parallax-title">Добро пожаловать!</h1>
-    <p id="parallax-text">Это наш уютный Discord-сервер для друзей.<br>Присоединяйся к общению, играм и весёлым вечерам!</p>
-    <a id="parallax-button" class="button" href="https://discord.gg/ТВОЙ_ИНВАЙТ" target="_blank">Присоединиться</a>
-  </div>
+  <canvas id="bg"></canvas>
+  <div class="content">
+    <h1>Добро пожаловать на лучший Discord-сервер!</h1>
+    <a href="https://discord.gg/6QNa76jnS7" class="join-btn">Вступить на сервер</a>
+  </div>
 
-  <script>
-    const container = document.querySelector('.container');
-    const title = document.getElementById('parallax-title');
-    const text = document.getElementById('parallax-text');
-    const button = document.getElementById('parallax-button');
+  <script>
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    container.addEventListener('mousemove', (e) => {
-      // Calculate the center of the viewport
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
+    let particlesArray = [];
+    const colors = ["#00ffff", "#ff00ff", "#00ff00", "#ffff00"];
 
-      // Get mouse position relative to the center
-      const mouseX = e.clientX - centerX;
-      const mouseY = e.clientY - centerY;
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-      // Define different sensitivity levels for elements to create depth
-      // Larger values mean less movement (further away illusion)
-      // Smaller values mean more movement (closer illusion)
-      const sensitivityTitle = 0.02; // Title moves less (further back)
-      const sensitivityText = 0.015; // Text moves medium
-      const sensitivityButton = 0.025; // Button moves most (closer to viewer)
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
 
-      // Calculate delta for each element
-      const deltaXTitle = mouseX * sensitivityTitle;
-      const deltaYTitle = mouseY * sensitivityTitle;
+    function init() {
+      particlesArray = [];
+      for (let i = 0; i < 150; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
 
-      const deltaXText = mouseX * sensitivityText;
-      const deltaYText = mouseY * sensitivityText;
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let particle of particlesArray) {
+        particle.update();
+        particle.draw();
+      }
+      requestAnimationFrame(animate);
+    }
 
-      const deltaXButton = mouseX * sensitivityButton;
-      const deltaYButton = mouseY * sensitivityButton;
+    init();
+    animate();
 
-      // Apply transform in the opposite direction of mouse movement for parallax effect
-      title.style.transform = `translate(${-deltaXTitle}px, ${-deltaYTitle}px)`;
-      text.style.transform = `translate(${-deltaXText}px, ${-deltaYText}px)`;
-      button.style.transform = `translate(${-deltaXButton}px, ${-deltaYButton}px)`;
-    });
-
-    container.addEventListener('mouseleave', () => {
-      // Reset position when mouse leaves the container area
-      title.style.transform = `translate(0, 0)`;
-      text.style.transform = `translate(0, 0)`;
-      button.style.transform = `translate(0, 0)`;
-    });
-  </script>
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+  </script>
 </body>
 </html>
