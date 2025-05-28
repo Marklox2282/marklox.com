@@ -1,112 +1,152 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Друзья в Discord</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+\<\!DOCTYPE html\>
 
-    body {
-      font-family: 'Rubik', sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(-45deg, #1e1e2f, #3b3b98, #5865F2, #404EED);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
+\<html lang="ru"\>
+\<head\>
+  \<meta charset="UTF-8" /\>
+  \<meta name="viewport" content="width=device-width, initial-scale=1.0"/\>
+  \<title\>Друзья в Discord\</title\>
+  \<link href="https://discord.gg/2u4uq6eDJH" rel="stylesheet"/\>
+  \<style\>
+    \* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    /* Падающие звездочки */
-    body::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(#ffffff22 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.2;
-      z-index: 0;
-      animation: twinkle 10s linear infinite;
-    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(-45deg, \#232754, \#36399a, \#7289da, \#42459e);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite, wave 10s ease-in-out infinite alternate;
+      color: \#fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+    /\* Падающие звездочки \*/
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(\#ffffff22 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      z-index: 0;
+      animation: twinkle 10s linear infinite;
+    }
 
-    @keyframes twinkle {
-      from { background-position: 0 0; }
-      to { background-position: 100px 100px; }
-    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-    .container {
-      text-align: center;
-      animation: fadeIn 1.5s ease;
-      padding: 30px;
-      max-width: 600px;
-      z-index: 1;
-    }
+    @keyframes twinkle {
+      from { background-position: 0 0; }
+      to { background-position: 100px 100px; }
+    }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+    @keyframes wave {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
 
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
+    .container {
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+      padding: 30px;
+      max-width: 600px;
+      z-index: 1;
+    }
 
-    a.button {
-      background-color: #fff;
-      color: #5865F2;
-      padding: 14px 28px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 12px;
-      transition: background 0.3s ease, transform 0.3s ease;
-      display: inline-block;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      transform: translate(0, 0); /\* Для параллакса \*/
+      transition: transform 0.1s ease-out;
+    }
 
-    a.button:hover {
-      background-color: #dcdcff;
-      transform: scale(1.05);
-    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      transform: translate(0, 0); /\* Для параллакса \*/
+      transition: transform 0.1s ease-out;
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    a.button {
+      background-color: \#fff;
+      color: \#7289da;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      transition: background 0.3s ease, transform 0.3s ease, translate 0.1s ease-out;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transform: translate(0, 0); /\* Для параллакса \*/
+    }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Добро пожаловать!</h1>
-    <p>Это наш уютный Discord-сервер для друзей.<br>Присоединяйся к общению, играм и весёлым вечерам!</p>
-    <a class="button" href="https://discord.gg/2u4uq6eDJH" target="_blank">Присоединиться</a>
-  </div>
-</body>
-</html>
+    a.button:hover {
+      background-color: \#e0e0ff;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  \</style\>
+
+\</head\>
+\<body\>
+  \<div class="container"\>
+    \<h1 id="parallax-title"\>Добро пожаловать\!\</h1\>
+    \<p id="parallax-text"\>Это наш уютный Discord-сервер для друзей.\<br\>Присоединяйся к общению, играм и весёлым вечерам\!\</p\>
+    \<a id="parallax-button" class="button" href="[подозрительная ссылка удалена]" target="\_blank"\>Присоединиться\</a\>
+  \</div\>
+
+  \<script\>
+    const container = document.querySelector('.container');
+    const title = document.getElementById('parallax-title');
+    const text = document.getElementById('parallax-text');
+    const button = document.getElementById('parallax-button');
+
+    container.addEventListener('mousemove', (e) =\> {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const deltaX = (mouseX - centerX) \* 0.02;
+      const deltaY = (mouseY - centerY) \* 0.02;
+
+      title.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      text.style.transform = `translate(${deltaX * 0.8}px, ${deltaY * 0.8}px)`;
+      button.style.transform = `translate(${deltaX * 1.2}px, ${deltaY * 1.2}px)`;
+    });
+
+    container.addEventListener('mouseleave', () =\> {
+      title.style.transform = `translate(0, 0)`;
+      text.style.transform = `translate(0, 0)`;
+      button.style.transform = `translate(0, 0)`;
+    });
+  \</script\>
+
+\</body\>
+\</html\>
