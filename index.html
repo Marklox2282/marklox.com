@@ -2,115 +2,90 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Лучший Дискорд Хайп Клуб в мире!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Добро пожаловать</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
+      height: 100vh;
+      background: #111; /* темный фон */
       overflow: hidden;
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
       color: white;
+    }
+
+    .center {
       text-align: center;
-    }
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    .content {
+      z-index: 2;
       position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
     }
+
     h1 {
       font-size: 3em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #fff;
+      background: linear-gradient(90deg, #4facfe, #00f2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .join-btn {
-      padding: 15px 30px;
-      font-size: 1.2em;
+
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1em;
       color: white;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid white;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      background-color: #007bff;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #007bff88;
+      transition: background-color 0.3s ease;
     }
-    .join-btn:hover {
-      background: white;
-      color: #222;
+
+    a.button:hover {
+      background-color: #0056b3;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: randomColor();
+      top: -10px;
+      animation: fall 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotateZ(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  <div class="content">
-    <h1>Добро пожаловать на лучший Discord-сервер!</h1>
-    <a href="https://discord.gg/6QNa76jnS7" class="join-btn">Вступить на сервер</a>
+  <div class="center">
+    <h1>Добро пожаловать на лучший Discord Хайп Купол!</h1>
+    <a href="https://discord.gg/твой_код_приглашения" class="join-btn">Вступить в сервер</a>
   </div>
 
   <script>
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particlesArray = [];
-    const colors = ["#00ffff", "#ff00ff", "#00ff00", "#ffff00"];
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    function randomColor() {
+      const colors = ['#ff0', '#f0f', '#0ff', '#0f0', '#f00', '#00f'];
+      return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    function init() {
-      particlesArray = [];
-      for (let i = 0; i < 150; i++) {
-        particlesArray.push(new Particle());
-      }
+    for (let i = 0; i < 150; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      confetti.style.backgroundColor = randomColor();
+      document.body.appendChild(confetti);
     }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let particle of particlesArray) {
-        particle.update();
-        particle.draw();
-      }
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
   </script>
 </body>
 </html>
