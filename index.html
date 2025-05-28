@@ -11,31 +11,64 @@
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Rubik', sans-serif;
-      background: linear-gradient(135deg, #5865F2, #404EED);
+      min-height: 100vh;
+      background: linear-gradient(-45deg, #1e1e2f, #3b3b98, #5865F2, #404EED);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       overflow: hidden;
+      position: relative;
     }
+
+    /* Падающие звездочки */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#ffffff22 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.2;
+      z-index: 0;
+      animation: twinkle 10s linear infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    @keyframes twinkle {
+      from { background-position: 0 0; }
+      to { background-position: 100px 100px; }
+    }
+
     .container {
       text-align: center;
       animation: fadeIn 1.5s ease;
-      padding: 20px;
+      padding: 30px;
       max-width: 600px;
+      z-index: 1;
     }
+
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
+
     p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
       opacity: 0.9;
     }
+
     a.button {
       background-color: #fff;
       color: #5865F2;
@@ -46,7 +79,9 @@
       border-radius: 12px;
       transition: background 0.3s ease, transform 0.3s ease;
       display: inline-block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
+
     a.button:hover {
       background-color: #dcdcff;
       transform: scale(1.05);
